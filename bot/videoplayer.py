@@ -10,7 +10,7 @@ group_call_factory = GroupCallFactory(app, GroupCallFactory.MTPROTO_CLIENT_TYPE.
 VIDEO_CALL = {}
 
 
-@Client.on_message(filters.command("stream"))
+@Client.on_message(filters.command("streamv"))
 async def stream(client, m: Message):
     replied = m.reply_to_message
     if not replied:
@@ -36,7 +36,7 @@ async def stream(client, m: Message):
     else:
         await m.reply("`please reply to a video !`")
 
-@Client.on_message(filters.command("stop"))
+@Client.on_message(filters.command("endv"))
 async def stopvideo(client, m: Message):
     chat_id = m.chat.id
     try:
