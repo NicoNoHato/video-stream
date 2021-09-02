@@ -21,7 +21,7 @@ async def stream(client, m: Message):
         try:
             video = await client.download_media(m.reply_to_message)
             await msg.edit("♻ **Converting...**")
-            os.system(f'ffmpeg -i "{video}" -vn -f s16le -ac 2 -ar 48000 -acodec pcm_s16le -filter:a "atempo=0.81" vid-{chat_id}.raw -y')
+            os.system(f'ffmpeg -i "{video}" -vn -f s16le -acodec aac vid-{chat_id}.raw -y')
         except Exception as e:
             await msg.edit(f"**🚫 Error** - `{e}`")
         await asyncio.sleep(5)
